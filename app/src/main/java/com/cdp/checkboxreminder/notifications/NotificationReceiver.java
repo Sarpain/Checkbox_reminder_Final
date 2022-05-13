@@ -15,6 +15,7 @@ import com.cdp.checkboxreminder.R;
 import com.cdp.checkboxreminder.activity.MainActivity;
 import com.cdp.checkboxreminder.managers.DataManager;
 
+
 public class NotificationReceiver extends BroadcastReceiver {
 
     @Override
@@ -25,8 +26,11 @@ public class NotificationReceiver extends BroadcastReceiver {
         Intent repeating_intent = new Intent(context, MainActivity.class);
         repeating_intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, repeating_intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
         Notification notification = new NotificationCompat.Builder(context, REPEAT_ID)
 
+                .setContentIntent(pendingIntent)
                 .setSmallIcon(R.drawable.ic_baseline_short_text_24)
                 .setContentTitle("Tienes "+String.valueOf(DataManager.todayTasks+" tarea/s por hacer."))
                 .setContentText("Entra para ver mas.")
