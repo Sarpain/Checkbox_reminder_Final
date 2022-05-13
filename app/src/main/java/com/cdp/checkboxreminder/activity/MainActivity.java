@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 */
-   public void sendDaily() {
+    public void sendDaily() {
         //Determina la hora para que llegue la notificacion
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, 21);
